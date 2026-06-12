@@ -1,20 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --blue-900: hsl(209, 23%, 22%);
   --blue-950: hsl(207, 26%, 17%);
+  --blue-900: hsl(209, 23%, 22%);
+
   --grey-950: hsl(200, 15%, 8%);
   --grey-400: hsl(0, 0%, 50%);
   --grey-50: hsl(0, 0%, 99%);
+
   --white: hsl(0, 100%, 100%);
   --black: hsl(0, 0%, 0%);
+
+  /* Semantic tokens for LIGHT MODE (default) */
+  --text-main: var(--grey-950);
+  --text-muted: var(--grey-400);
+
+  --background: var(--grey-50);
+  --card: var(--white);
+
+  --shadow-base: 0px 2px 4px 0px rgba(0, 0, 0, 0.0562);
 }
 
+/* Semantic tokens for DARK MODE */
 .dark {
+  --text-main: var(--white);
+  --text-muted: var(--white);
+
+  --background: var(--blue-950);
+  --card: var(--blue-900);
+
+  --shadow-base: 0px 2px 9px 0px rgba(0, 0, 0, 0.0532);
 }
 
 @theme {
   --color-*: initial;
 
   --font-sans: var(--font-nunito-sans);
+
+  /* Utility classes */
+  --color-ink-primary: var(--text-main);
+  --color-ink-muted: var(--text-muted);
+
+  --color-background: var(--background);
+  --color-card: var(--card);
+
+  --shadow-card: var(--shadow-base);
 }
