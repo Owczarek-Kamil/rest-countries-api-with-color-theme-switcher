@@ -19,6 +19,8 @@
   --card: var(--white);
 
   --shadow-base: 0px 2px 4px 0px rgba(0, 0, 0, 0.0562);
+
+  --border-radius: 0.3125rem;
 }
 
 /* Semantic tokens for DARK MODE */
@@ -45,4 +47,5 @@
   --color-card: var(--card);
 
   --shadow-card: var(--shadow-base);
+  --radius-card: var(--border-radius);
 }

@@ -22,7 +22,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${nunitoSans.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full min-w-xs flex-col bg-background">{children}</body>
     </html>
   );
 }
