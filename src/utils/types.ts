@@ -13,10 +13,10 @@ type Language = {
   iso639_1?: string;
   iso639_2: string;
   name: string;
-  nativeName: string;
+  nativeName?: string;
 };
 
-type Translations = Record<string, string>;
+type Translations = Record<string, string | undefined>;
 
 type RegionalBloc = {
   acronym: string;
@@ -32,11 +32,11 @@ export type Country = {
   alpha3Code: string;
   callingCodes: string[];
   capital?: string;
-  altSpellings: string[];
+  altSpellings?: string[];
   subregion: string;
   region: string;
   population: number;
-  latlng?: [number, number];
+  latlng?: number[];
   demonym: string;
   area?: number;
   gini?: number;

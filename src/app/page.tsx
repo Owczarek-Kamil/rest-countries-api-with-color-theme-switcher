@@ -1,9 +1,11 @@
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-regular-svg-icons";
-
-import localCountries from "@/data/data.json";
 import CountryCard from "@/components/country-card";
-import Link from "next/link";
+import { Countries } from "@/utils/types";
+import localCountries from "@/data/data.json";
+
+const localCountriesData: Countries = localCountries;
 
 export default async function Home() {
   return (
@@ -27,7 +29,7 @@ export default async function Home() {
 
       <main className="px-14 md:px-21">
         <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-2 md:gap-18 lg:grid-cols-3 xl:grid-cols-4">
-          {localCountries.map((country) => (
+          {localCountriesData.map((country) => (
             <li
               key={country.alpha3Code}
               className="mx-auto h-full w-full max-w-65.5">
