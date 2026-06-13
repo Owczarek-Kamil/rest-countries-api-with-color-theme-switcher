@@ -29,7 +29,7 @@ export default async function Home() {
 
       <main className="px-14 md:px-21">
         <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-2 md:gap-18 lg:grid-cols-3 xl:grid-cols-4">
-          {localCountriesData.map((country) => (
+          {localCountriesData.map((country, i) => (
             <li
               key={country.alpha3Code}
               className="mx-auto h-full w-full max-w-65.5">
@@ -42,6 +42,7 @@ export default async function Home() {
                   population={country.population}
                   region={country.region}
                   capital={country.capital}
+                  flagPriority={i === 0}
                 />
               </Link>
             </li>

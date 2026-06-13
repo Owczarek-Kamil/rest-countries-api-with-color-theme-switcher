@@ -7,6 +7,7 @@ export type CountryCardProps = {
   population: number;
   region: string;
   capital?: string;
+  flagPriority?: boolean;
 };
 
 export default function CountryCard(props: CountryCardProps) {
@@ -17,6 +18,7 @@ export default function CountryCard(props: CountryCardProps) {
           src={props.flagUrl}
           alt={`${props.name} flag`}
           fill
+          priority={props.flagPriority}
           className="object-cover"
         />
       </div>
