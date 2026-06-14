@@ -12,7 +12,7 @@ export type CountryCardProps = {
 
 export default function CountryCard(props: CountryCardProps) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-card bg-card shadow-card">
+    <article className="flex h-full flex-col overflow-hidden rounded-card bg-card shadow-card transition">
       <div className="relative h-40 w-full shrink-0">
         <Image
           src={props.flagUrl}
@@ -23,21 +23,21 @@ export default function CountryCard(props: CountryCardProps) {
         />
       </div>
       <div className="flex flex-1 flex-col gap-3 px-6 pt-5.5 pb-12">
-        <h2 className="text-lg/[1.45] font-extrabold text-ink-primary">{props.name}</h2>
-        <div className="flex flex-col gap-2">
-          <div className="text-sm/[1] text-ink-primary">
-            <span className="font-semibold">Population: </span>
-            <span className="font-light">{formatPopulation(props.population)}</span>
+        <h2 className="text-lg/[1.45] font-extrabold">{props.name}</h2>
+        <dl className="flex flex-col gap-2 text-sm/[1]">
+          <div className="flex gap-1">
+            <dt className="font-semibold">Population:</dt>
+            <dd className="font-light">{formatPopulation(props.population)}</dd>
           </div>
-          <div className="text-sm/[1] font-semibold text-ink-primary">
-            <span className="font-semibold">Region: </span>
-            <span className="font-light">{props.region}</span>
+          <div className="flex gap-1">
+            <dt className="font-semibold">Region:</dt>
+            <dd className="font-light">{props.region}</dd>
           </div>
-          <div className="text-sm/[1] font-semibold text-ink-primary">
-            <span className="font-semibold">Capital: </span>
-            <span className="font-light">{props.capital ?? "-"}</span>
+          <div className="flex gap-1">
+            <dt className="font-semibold">Capital:</dt>
+            <dd className="font-light">{props.capital ?? "-"}</dd>
           </div>
-        </div>
+        </dl>
       </div>
     </article>
   );

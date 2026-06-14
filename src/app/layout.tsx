@@ -30,7 +30,7 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`${nunitoSans.variable} h-full antialiased ${theme === "dark" ? "dark" : ""}`}>
-      <body className="flex min-h-full min-w-xs flex-col bg-background">
+      <body className="flex min-h-full min-w-xs flex-col bg-background text-ink-primary transition">
         <Header theme={theme} />
         {children}
       </body>

@@ -42,11 +42,9 @@ export default async function CountryPage({ params }: { params: Promise<{ code: 
         />
       </div>
       <div className="flex w-full flex-col gap-4 md:gap-6">
-        <h2 className="text-2xl/snug font-extrabold text-ink-primary md:text-[2rem]/snug">
-          {countryData.name}
-        </h2>
+        <h2 className="text-2xl/snug font-extrabold md:text-[2rem]/snug">{countryData.name}</h2>
         <div className="flex flex-col gap-8 md:gap-6.5 xl:gap-16">
-          <div className="flex flex-col gap-8 text-sm/[2rem] text-ink-primary md:flex-row md:justify-between md:text-base/[2rem]">
+          <div className="flex flex-col gap-8 text-sm/[2rem] md:flex-row md:justify-between md:text-base/[2rem]">
             <dl>
               <div className="flex gap-1">
                 <dt className="font-semibold capitalize">Native name:</dt>
@@ -89,15 +87,13 @@ export default async function CountryPage({ params }: { params: Promise<{ code: 
             </dl>
           </div>
           <section className="flex flex-col gap-4 md:flex-row">
-            <h3 className="shrink-0 text-base/[1.75rem] font-semibold text-ink-primary">
-              Border Countries:
-            </h3>
+            <h3 className="shrink-0 text-base/[1.75rem] font-semibold">Border Countries:</h3>
             <ul className="flex flex-wrap gap-4">
               {fetchBorders().map((borderCountry) => (
                 <li key={borderCountry.name}>
                   <Link
                     href={`/${borderCountry.alpha3Code.toLowerCase()}`}
-                    className="grid min-h-7 min-w-24 place-items-center rounded-xs bg-card px-1.5 text-xs/[1.35] text-ink-primary shadow-card transition-opacity hover:opacity-75 focus-visible:outline-offset-4 md:text-sm">
+                    className="grid min-h-7 min-w-24 place-items-center rounded-xs bg-card px-1.5 text-xs/[1.35] shadow-card transition hover:opacity-75 focus-visible:outline-offset-4 md:text-sm">
                     {borderCountry.name}
                   </Link>
                 </li>

@@ -18,7 +18,7 @@ export default function ThemeToggle({ theme }: ThemeProp) {
   return (
     <button
       onClick={toggleTheme}
-      className="flex cursor-pointer items-center gap-2 text-ink-primary transition-opacity hover:opacity-75 focus-visible:outline-offset-4">
+      className="flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-75 focus-visible:outline-offset-4">
       {isDark ? (
         <IoSunnyOutline className="size-4 xl:size-5" />
       ) : (

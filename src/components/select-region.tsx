@@ -56,18 +56,16 @@ export default function SelectRegion() {
 
   return (
     <div
-      className="relative w-fit text-xs/[1.35] text-ink-primary md:text-sm/[1.45]"
+      className="relative w-fit text-xs/[1.35] md:text-sm/[1.45]"
       ref={dropdownRef}>
       <button
         onClick={toggle}
-        className="flex min-w-50 cursor-pointer items-center justify-between rounded-card bg-card px-6 py-4 shadow-card transition-opacity hover:opacity-75 focus-visible:outline-offset-4 md:py-4.5">
+        className="flex min-w-50 cursor-pointer items-center justify-between rounded-card bg-card px-6 py-4 shadow-card transition hover:opacity-75 focus-visible:outline-offset-4 md:py-4.5">
         <span>{currentRegionName || "Filter by Region"}</span>
-        <IoChevronDown
-          className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-        />
+        <IoChevronDown className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
       </button>
       <div
-        className={`absolute z-50 flex w-full origin-top flex-col gap-2 rounded-card bg-card px-6 py-4 shadow-card transition-all duration-300 ease-in-out ${
+        className={`absolute z-50 flex w-full origin-top flex-col gap-2 rounded-card bg-card px-6 py-4 shadow-card transition-all ease-in-out ${
           isOpen
             ? "visible translate-y-2 scale-100 opacity-100"
             : "invisible translate-y-0 scale-95 opacity-0"
@@ -75,7 +73,8 @@ export default function SelectRegion() {
         {currentRegionParam && (
           <Link
             href={buildLink(null)}
-            onClick={() => setIsOpen(false)}>
+            onClick={() => setIsOpen(false)}
+            className="transition-opacity hover:opacity-75 focus-visible:outline-offset-4">
             All
           </Link>
         )}

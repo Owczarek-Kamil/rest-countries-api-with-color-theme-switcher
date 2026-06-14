@@ -48,4 +48,6 @@
 
   --shadow-card: var(--shadow-base);
   --radius-card: var(--border-radius);
+
+  --default-transition-duration: 300ms;
 }
