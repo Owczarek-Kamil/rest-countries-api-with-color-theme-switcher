@@ -5,40 +5,36 @@ import { Countries, CountriesApiResponse } from "@/utils/types";
 import Link from "next/link";
 import CountryCard from "./country-card";
 import { IoSyncOutline } from "react-icons/io5";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { OFFSET_PARAM_NAME } from "@/utils/searchParams";
 
 export default function CountryList({
   initialCountries,
   initialHasMore,
-  offsetParam,
 }: {
   initialCountries: Countries;
   initialHasMore: boolean;
-  offsetParam: number;
 }) {
   const [countries, setCountries] = useState<Countries>(initialCountries);
   const [hasMore, setHasMore] = useState(initialHasMore);
   const [loading, setLoading] = useState(false);
+  const [offset, setOffset] = useState(1);
 
   const searchParams = useSearchParams();
-  const router = useRouter();
 
   const loadMore = async () => {
     setLoading(true);
-    const nextOffset = offsetParam + 1;
+    const nextOffset = offset + 1;
 
     const newParams = new URLSearchParams(searchParams.toString());
-
     newParams.set(OFFSET_PARAM_NAME, nextOffset.toString());
 
-    router.push(`/?${newParams.toString()}`, { scroll: false });
-
-    const res = await fetch(`/api/countries?${newParams.toString()}`);
+    const res = await fetch(`/api/countries?${newParams.toString()}`, { cache: "no-store" });
     const data: CountriesApiResponse = await res.json();
 
     setCountries(data.countries);
     setHasMore(data.hasMore);
+    setOffset(nextOffset);
     setLoading(false);
   };
 

@@ -5,7 +5,7 @@ import { IoChevronDown } from "react-icons/io5";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { OFFSET_PARAM_NAME, REGION_PARAM_NAME } from "@/utils/searchParams";
+import { REGION_PARAM_NAME } from "@/utils/searchParams";
 
 export default function SelectRegion() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,8 +50,6 @@ export default function SelectRegion() {
     } else {
       params.delete(REGION_PARAM_NAME);
     }
-
-    params.set(OFFSET_PARAM_NAME, "1");
 
     return `/?${params.toString()}`;
   };

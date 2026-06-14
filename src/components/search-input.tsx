@@ -1,6 +1,6 @@
 "use client";
 
-import { OFFSET_PARAM_NAME, SEARCH_PARAM_NAME } from "@/utils/searchParams";
+import { SEARCH_PARAM_NAME } from "@/utils/searchParams";
 import { useRouter, useSearchParams } from "next/navigation";
 import { IoSearch } from "react-icons/io5";
 
@@ -23,8 +23,6 @@ export default function SearchInput() {
     } else {
       params.delete(SEARCH_PARAM_NAME);
     }
-
-    params.set(OFFSET_PARAM_NAME, "1");
 
     router.push(`/?${params.toString()}`);
   };
