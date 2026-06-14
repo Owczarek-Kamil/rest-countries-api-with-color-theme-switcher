@@ -1,3 +1,5 @@
+export type ThemeProp = { theme: "dark" | "light" };
+
 type Flags = {
   svg: string;
   png: string;
