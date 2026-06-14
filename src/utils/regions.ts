@@ -4,16 +4,16 @@ export const REGIONS: { name: string; param: string }[] = [
     param: "africa",
   },
   {
-    name: "America",
-    param: "america",
+    name: "Americas",
+    param: "americas",
   },
   {
     name: "Asia",
     param: "asia",
   },
   {
-    name: "Europa",
-    param: "europa",
+    name: "Europe",
+    param: "europe",
   },
   {
     name: "Oceania",

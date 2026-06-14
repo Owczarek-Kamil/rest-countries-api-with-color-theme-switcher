@@ -1,13 +1,17 @@
 import Link from "next/link";
 import CountryCard from "@/components/country-card";
-import { Countries } from "@/utils/types";
-import localCountries from "@/data/data.json";
 import SelectRegion from "@/components/select-region";
 import SearchInput from "@/components/search-input";
+import { fetchCountries } from "@/utils/fetch";
 
-const localCountriesData: Countries = localCountries;
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const filters = await searchParams;
+  const countries = fetchCountries(filters);
 
-export default async function Home() {
   return (
     <main className="px-4 pt-6 pb-16 md:px-21 md:pt-12 md:pb-14.5 xl:py-12">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 md:gap-12">
@@ -16,7 +20,7 @@ export default async function Home() {
           <SelectRegion />
         </nav>
         <ul className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-18 lg:grid-cols-3 xl:grid-cols-4">
-          {localCountriesData.map((country, i) => (
+          {countries.map((country, i) => (
             <li
               key={country.alpha3Code}
               className="mx-auto h-full w-full max-w-65.5">
