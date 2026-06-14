@@ -6,6 +6,8 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 
 Please note that this solution uses a local JSON file (`data.json`) instead of the live [REST Countries API](https://restcountries.com/). This decision was made to avoid hitting the strict rate limits associated with the public API, ensuring the application remains functional and fast for all users at all times.
 
+To bridge the gap between static data and dynamic requirements, I leveraged Next.js Route Handlers to create a mock API. This architecture allows the application to perform fetch requests on the client side just like it would with a real backend, while keeping the initial page load highly optimized via Server-Side Rendering (SSR).
+
 ## The challenge
 
 Users should be able to:
@@ -19,11 +21,8 @@ Users should be able to:
 
 ### Extra Requirements & Improvements
 
-- [ ] **Data Fetching Architecture:** - Implement a dedicated service layer to mock API behavior, decoupling components from the raw data source
-  - Integrate pagination ("Load More" logic) and sorting filters (alphabetical & population) directly into the data retrieval pipeline
-  - Implement Skeleton Screens to handle asynchronous states during data fetching for a smoother user experience
-
-- [ ] **Sorting:** Add alphabetical sorting filters
+- [x] **Data Fetching Architecture:** - Implement a dedicated service layer to mock API behavior, decoupling components from the raw data source
+  - Integrate pagination ("Load More" logic)
 
 ## Links
 

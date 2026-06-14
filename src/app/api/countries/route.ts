@@ -5,6 +5,7 @@ import { fetchData } from "@/utils/fetchData";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function GET(request: NextRequest) {
+  // Simulate network latency (1-5s) to demonstrate loading states
   const randomDelay = Math.floor(Math.random() * (5000 - 1000 + 1) + 1000);
 
   await sleep(randomDelay);
