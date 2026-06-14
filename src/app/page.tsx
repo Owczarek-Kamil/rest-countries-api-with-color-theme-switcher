@@ -1,9 +1,10 @@
-import Link from "next/link";
-import CountryCard from "@/components/country-card";
 import SelectRegion from "@/components/select-region";
 import SearchInput from "@/components/search-input";
-import { fetchCountries } from "@/utils/fetch";
 import DataNotFound from "@/components/data-not-found";
+import { getValidatedParams, OFFSET_PARAM_NAME } from "@/utils/searchParams";
+import { redirect } from "next/navigation";
+import CountryList from "@/components/country-list";
+import { CountriesApiResponse } from "@/utils/types";
 
 export default async function Home({
   searchParams,
@@ -11,7 +12,21 @@ export default async function Home({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const filters = await searchParams;
-  const countries = fetchCountries(filters);
+  const { params, isValidOffset } = getValidatedParams(filters);
+
+  if (!isValidOffset) {
+    params.set(OFFSET_PARAM_NAME, "1");
+    redirect(`/?${params.toString()}`);
+  }
+
+  const currentOffset = Number(params.get(OFFSET_PARAM_NAME)) || 1;
+
+  const baseUrl = process.env.APP_URL;
+  const res = await fetch(`${baseUrl}/api/countries?${params.toString()}`);
+  const data: CountriesApiResponse = await res.json();
+
+  const countries = data.countries;
+  const hasMore = data.hasMore;
 
   return (
     <main className="px-4 pt-6 pb-16 md:px-21 md:pt-12 md:pb-14.5 xl:py-12">
@@ -23,26 +38,12 @@ export default async function Home({
         {countries.length === 0 ? (
           <DataNotFound plural />
         ) : (
-          <ul className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-18 lg:grid-cols-3 xl:grid-cols-4">
-            {countries.map((country, i) => (
-              <li
-                key={country.alpha3Code}
-                className="mx-auto h-full w-full max-w-65.5">
-                <Link
-                  href={`/${country.alpha3Code.toLowerCase()}`}
-                  className="block h-full rounded-card focus-visible:outline-offset-4">
-                  <CountryCard
-                    name={country.name}
-                    flagUrl={country.flags.svg}
-                    population={country.population}
-                    region={country.region}
-                    capital={country.capital}
-                    flagPriority={i === 0}
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <CountryList
+            key={JSON.stringify(filters)}
+            initialCountries={countries}
+            initialHasMore={hasMore}
+            offsetParam={currentOffset}
+          />
         )}
       </div>
     </main>

@@ -17,6 +17,14 @@ Users should be able to:
 - [x] Click through to the border countries on the detail page
 - [x] Toggle the color scheme between light and dark mode _(optional)_
 
+### Extra Requirements & Improvements
+
+- [ ] **Data Fetching Architecture:** - Implement a dedicated service layer to mock API behavior, decoupling components from the raw data source
+  - Integrate pagination ("Load More" logic) and sorting filters (alphabetical & population) directly into the data retrieval pipeline
+  - Implement Skeleton Screens to handle asynchronous states during data fetching for a smoother user experience
+
+- [ ] **Sorting:** Add alphabetical sorting filters
+
 ## Links
 
 - Solution URL: [https://github.com/Owczarek-Kamil/rest-countries-api-with-color-theme-switcher](https://github.com/Owczarek-Kamil/rest-countries-api-with-color-theme-switcher)
