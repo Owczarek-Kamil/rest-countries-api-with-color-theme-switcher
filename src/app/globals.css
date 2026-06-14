@@ -51,3 +51,9 @@
 
   --default-transition-duration: 300ms;
 }
+
+@layer base {
+  body {
+    overflow-y: scroll;
+  }
+}
