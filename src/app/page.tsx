@@ -3,6 +3,7 @@ import CountryCard from "@/components/country-card";
 import SelectRegion from "@/components/select-region";
 import SearchInput from "@/components/search-input";
 import { fetchCountries } from "@/utils/fetch";
+import DataNotFound from "@/components/data-not-found";
 
 export default async function Home({
   searchParams,
@@ -19,26 +20,30 @@ export default async function Home({
           <SearchInput />
           <SelectRegion />
         </nav>
-        <ul className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-18 lg:grid-cols-3 xl:grid-cols-4">
-          {countries.map((country, i) => (
-            <li
-              key={country.alpha3Code}
-              className="mx-auto h-full w-full max-w-65.5">
-              <Link
-                href={`/${country.alpha3Code.toLowerCase()}`}
-                className="block h-full rounded-card focus-visible:outline-offset-4">
-                <CountryCard
-                  name={country.name}
-                  flagUrl={country.flags.svg}
-                  population={country.population}
-                  region={country.region}
-                  capital={country.capital}
-                  flagPriority={i === 0}
-                />
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {countries.length === 0 ? (
+          <DataNotFound plural />
+        ) : (
+          <ul className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-18 lg:grid-cols-3 xl:grid-cols-4">
+            {countries.map((country, i) => (
+              <li
+                key={country.alpha3Code}
+                className="mx-auto h-full w-full max-w-65.5">
+                <Link
+                  href={`/${country.alpha3Code.toLowerCase()}`}
+                  className="block h-full rounded-card focus-visible:outline-offset-4">
+                  <CountryCard
+                    name={country.name}
+                    flagUrl={country.flags.svg}
+                    population={country.population}
+                    region={country.region}
+                    capital={country.capital}
+                    flagPriority={i === 0}
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </main>
   );
