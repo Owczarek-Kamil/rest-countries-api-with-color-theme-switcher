@@ -1,5 +1,4 @@
-import { faMoon } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IoMoonOutline } from "react-icons/io5";
 
 export default function Header() {
   return (
@@ -9,10 +8,7 @@ export default function Header() {
           Where in the world?
         </h1>
         <button className="flex cursor-pointer items-center gap-2 text-ink-primary transition-opacity hover:opacity-75 focus-visible:outline-offset-4">
-          <FontAwesomeIcon
-            icon={faMoon}
-            className="size-4 xl:size-5"
-          />
+          <IoMoonOutline className="size-4 xl:size-5" />
           <span className="text-[clamp(0.75rem,0.6667rem+0.4167vw,1rem)] font-semibold capitalize">
             Dark Mode
           </span>
