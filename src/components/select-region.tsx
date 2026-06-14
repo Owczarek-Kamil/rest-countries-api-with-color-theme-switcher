@@ -5,13 +5,14 @@ import { IoChevronDown } from "react-icons/io5";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { REGION_PARAM_NAME } from "@/utils/searchParams";
 
 export default function SelectRegion() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const searchParams = useSearchParams();
-  const currentRegionParam = searchParams.get("region");
+  const currentRegionParam = searchParams.get(REGION_PARAM_NAME);
 
   const currentRegionName = REGIONS.find((r) => r.param === currentRegionParam)?.name;
 
@@ -32,7 +33,7 @@ export default function SelectRegion() {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("keydown", handleKeyDown); //
+      document.addEventListener("keydown", handleKeyDown);
     }
 
     return () => {
@@ -40,6 +41,18 @@ export default function SelectRegion() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
+
+  const buildLink = (regionValue: string | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (regionValue) {
+      params.set(REGION_PARAM_NAME, regionValue);
+    } else {
+      params.delete(REGION_PARAM_NAME);
+    }
+
+    return `/?${params.toString()}`;
+  };
 
   return (
     <div
@@ -61,7 +74,7 @@ export default function SelectRegion() {
         }`}>
         {currentRegionParam && (
           <Link
-            href="/"
+            href={buildLink(null)}
             onClick={() => setIsOpen(false)}>
             All
           </Link>
@@ -70,10 +83,7 @@ export default function SelectRegion() {
         {REGIONS.map((region) => (
           <Link
             key={region.name}
-            href={{
-              pathname: "/",
-              query: { region: region.param },
-            }}
+            href={buildLink(region.param)}
             onClick={() => setIsOpen(false)}
             className="transition-opacity hover:opacity-75 focus-visible:outline-offset-4">
             {region.name}
