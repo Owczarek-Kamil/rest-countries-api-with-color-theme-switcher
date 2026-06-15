@@ -31,14 +31,14 @@ export default async function CountryPage({ params }: { params: Promise<{ code: 
   }
 
   return (
-    <article className="flex flex-col gap-12 md:gap-14 xl:flex-row xl:gap-30">
-      <div className="relative h-57.25 w-full shrink-0 overflow-hidden rounded-card shadow-card md:h-102 xl:w-140">
+    <article className="flex flex-col gap-12 rounded-card bg-card px-4 pt-2 pb-6 shadow-card transition-colors md:gap-14 md:px-6 md:pt-4 md:pb-8 xl:flex-row xl:items-center xl:gap-16 xl:px-6 xl:pt-8">
+      <div className="relative h-57.25 w-full shrink-0 md:h-102 xl:w-140">
         <Image
           src={countryData.flags.svg}
           alt={`${countryData.name} flag`}
           fill
           priority
-          className="object-contain p-2"
+          className="object-contain"
         />
       </div>
       <div className="flex w-full flex-col gap-4 md:gap-6">
@@ -93,7 +93,7 @@ export default async function CountryPage({ params }: { params: Promise<{ code: 
                 <li key={borderCountry.name}>
                   <Link
                     href={`/${borderCountry.alpha3Code.toLowerCase()}`}
-                    className="grid min-h-7 min-w-24 place-items-center rounded-xs bg-card px-1.5 text-xs/[1.35] shadow-card transition hover:opacity-75 focus-visible:outline-offset-4 md:text-sm">
+                    className="grid min-h-7 min-w-24 place-items-center rounded-xs bg-card px-1.5 text-xs/[1.35] text-ink-primary shadow-card transition-all hover:opacity-75 focus-visible:outline-offset-4 md:text-sm">
                     {borderCountry.name}
                   </Link>
                 </li>
