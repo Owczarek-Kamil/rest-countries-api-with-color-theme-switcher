@@ -24,6 +24,15 @@ Users should be able to:
 - [x] **Data Fetching Architecture:** - Implement a dedicated service layer to mock API behavior, decoupling components from the raw data source
   - Integrate pagination ("Load More" logic)
 
+Based on [@vickbk](https://www.frontendmentor.io/profile/vickbk) feedback:
+
+- [ ] **Leverage Next.js `loading.tsx`** - _"Right now, when a user clicks a country to view its details, there is no visual feedback while the new page loads. On slower networks, the app feels frozen or unresponsive."_
+- [ ] **Implement a quick de-bounce mechanism for search input (300-500ms delay)** - _"Forcing a user to press Enter to search without providing an explicit "Submit" button feels broken in modern web apps. Users expect data to filter dynamically as they type."_
+- [ ] **Pagination size optimization (Change limit to 12 or 24)** - _"Loading only 5 items at a time leaves massive empty gaps in your layout"_
+- [ ] **Theme discovery on initial load** - _"On a user's very first visit (before any cookie is set), the app defaults to light mode. If a user has their operating system or browser set to dark mode, forcing them into a bright light mode on initial load creates a jarring user experience."_
+- [ ] **Add hover styles for interactive elements** - _"Curiously, your interactive components have excellent native focus states (when using keyboard navigation), but they lack visual shifts on mouse hover. Desktop mouse users need that same immediate feedback to know an element is clickable"_
+- [ ] **(Optional) Explore Infinite Scroll** - _"While 'Load More' is fine, you could eventually upgrade this to an infinite scroll experience."_
+
 ## Links
 
 - Solution URL: [https://github.com/Owczarek-Kamil/rest-countries-api-with-color-theme-switcher](https://github.com/Owczarek-Kamil/rest-countries-api-with-color-theme-switcher)
