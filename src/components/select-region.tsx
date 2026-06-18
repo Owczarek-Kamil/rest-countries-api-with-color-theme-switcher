@@ -60,7 +60,7 @@ export default function SelectRegion() {
       ref={dropdownRef}>
       <button
         onClick={toggle}
-        className="flex min-w-50 cursor-pointer items-center justify-between rounded-card bg-card px-6 py-4 text-ink-primary shadow-card transition-all hover:bg-ink-primary/5 focus-visible:outline-offset-4 md:py-4.5">
+        className="flex min-w-50 cursor-pointer items-center justify-between rounded-card bg-card px-6 py-4 text-ink-primary shadow-card transition-colors hover:bg-ink-primary/5 focus-visible:outline-offset-4 md:py-4.5">
         <span>{currentRegionName || "Filter by Region"}</span>
         <IoChevronDown className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
       </button>
