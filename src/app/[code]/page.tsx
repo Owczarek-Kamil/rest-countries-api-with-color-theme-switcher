@@ -93,7 +93,7 @@ export default async function CountryPage({ params }: { params: Promise<{ code: 
                 <li key={borderCountry.name}>
                   <Link
                     href={`/${borderCountry.alpha3Code.toLowerCase()}`}
-                    className="grid min-h-7 min-w-24 place-items-center rounded-xs bg-card px-1.5 text-xs/[1.35] text-ink-primary shadow-card transition-all hover:opacity-75 focus-visible:outline-offset-4 md:text-sm">
+                    className="grid min-h-7 min-w-24 place-items-center rounded-md bg-card px-4 text-xs/[1.35] text-ink-primary shadow-card transition-colors hover:bg-ink-primary/5 focus-visible:outline-offset-4 md:text-sm">
                     {borderCountry.name}
                   </Link>
                 </li>

@@ -44,7 +44,7 @@ export default function CountryList({
         {countries.map((country, i) => (
           <li
             key={country.alpha3Code}
-            className="mx-auto h-full w-full max-w-65.5">
+            className="block h-full rounded-card transition-all hover:-translate-y-2 hover:shadow-lg focus-visible:outline-offset-4">
             <Link
               href={`/${country.alpha3Code.toLowerCase()}`}
               className="block h-full rounded-card focus-visible:outline-offset-4">
@@ -64,7 +64,9 @@ export default function CountryList({
         <button
           onClick={loadMore}
           disabled={loading}
-          className={`${loading ? "cursor-not-allowed" : "cursor-pointer"} mx-auto flex min-h-8 w-fit items-center justify-center gap-2 rounded-xs px-6 text-sm/[2.25] font-light shadow-card transition-all hover:opacity-75 focus-visible:outline-offset-4 md:min-h-10 md:px-8 md:py-1 md:text-base/loose`}>
+          className={`${
+            loading ? "cursor-not-allowed" : "cursor-pointer"
+          } mx-auto flex min-h-8 w-fit items-center justify-center gap-2 rounded-xs bg-card px-6 text-sm/[2.25] font-semibold text-ink-primary shadow-card transition-all hover:bg-ink-primary/5 focus-visible:outline-offset-4 md:min-h-10 md:px-8 md:text-base/loose`}>
           {loading ? (
             <>
               <IoSyncOutline className="size-4 animate-spin" />

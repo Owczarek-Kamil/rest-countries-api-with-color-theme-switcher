@@ -60,7 +60,7 @@ export default function SearchInput() {
         placeholder="Search for a country…"
         className="peer w-full rounded-card bg-card py-4 pl-18 text-xs/[1.35] shadow-card transition placeholder:text-ink-muted md:py-4.5 md:text-sm/[1.45]"
       />
-      <IoSearch className="absolute left-8 size-4 text-ink-muted transition-colors peer-focus-visible:text-ink-primary md:size-4.5" />
+      <IoSearch className="pointer-events-none absolute left-8 size-4 text-ink-muted transition-colors peer-focus-visible:text-ink-primary md:size-4.5" />{" "}
     </form>
   );
 }

@@ -60,12 +60,12 @@ export default function SelectRegion() {
       ref={dropdownRef}>
       <button
         onClick={toggle}
-        className="flex min-w-50 cursor-pointer items-center justify-between rounded-card bg-card px-6 py-4 shadow-card transition hover:opacity-75 focus-visible:outline-offset-4 md:py-4.5">
+        className="flex min-w-50 cursor-pointer items-center justify-between rounded-card bg-card px-6 py-4 text-ink-primary shadow-card transition-all hover:bg-ink-primary/5 focus-visible:outline-offset-4 md:py-4.5">
         <span>{currentRegionName || "Filter by Region"}</span>
         <IoChevronDown className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
       </button>
       <div
-        className={`absolute z-50 flex w-full origin-top flex-col gap-2 rounded-card bg-card px-6 py-4 shadow-card transition-all ease-in-out ${
+        className={`absolute z-50 flex w-full origin-top flex-col gap-1 rounded-card bg-card px-6 py-4 shadow-card transition-all ease-in-out ${
           isOpen
             ? "visible translate-y-2 scale-100 opacity-100"
             : "invisible translate-y-0 scale-95 opacity-0"
@@ -74,7 +74,7 @@ export default function SelectRegion() {
           <Link
             href={buildLink(null)}
             onClick={() => setIsOpen(false)}
-            className="transition-opacity hover:opacity-75 focus-visible:outline-offset-4">
+            className="-mx-3 rounded-md px-3 py-1.5 text-ink-primary transition-colors hover:bg-ink-primary/5 focus-visible:outline-offset-4">
             All
           </Link>
         )}
@@ -84,7 +84,7 @@ export default function SelectRegion() {
             key={region.name}
             href={buildLink(region.param)}
             onClick={() => setIsOpen(false)}
-            className="transition-opacity hover:opacity-75 focus-visible:outline-offset-4">
+            className="-mx-3 rounded-md px-3 py-1.5 text-ink-primary transition-colors hover:bg-ink-primary/5 focus-visible:outline-offset-4">
             {region.name}
           </Link>
         ))}

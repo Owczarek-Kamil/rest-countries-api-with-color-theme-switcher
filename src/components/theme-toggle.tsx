@@ -28,7 +28,7 @@ export default function ThemeToggle({ theme }: ThemeProp) {
   return (
     <button
       onClick={toggleTheme}
-      className="flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-75 focus-visible:outline-offset-4">
+      className="-mr-3 flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-ink-primary transition-all hover:bg-ink-primary/5 focus-visible:outline-offset-4">
       {!mounted ? (
         <div className="size-4 xl:size-5" />
       ) : isDark ? (
