@@ -2,6 +2,7 @@
 
 import { SEARCH_PARAM_NAME } from "@/utils/searchParams";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
 export default function SearchInput() {
@@ -9,6 +10,26 @@ export default function SearchInput() {
   const router = useRouter();
 
   const currentSearchQuery = searchParams.get(SEARCH_PARAM_NAME);
+
+  const [value, setValue] = useState(currentSearchQuery ?? "");
+
+  useEffect(() => {
+    if (value === (currentSearchQuery ?? "")) return;
+
+    const timeoutId = setTimeout(() => {
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (value) {
+        params.set(SEARCH_PARAM_NAME, value);
+      } else {
+        params.delete(SEARCH_PARAM_NAME);
+      }
+
+      router.push(`/?${params.toString()}`);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [value, currentSearchQuery, router, searchParams]);
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,7 +55,8 @@ export default function SearchInput() {
       <input
         name={SEARCH_PARAM_NAME}
         type="text"
-        defaultValue={currentSearchQuery ?? ""}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         placeholder="Search for a country…"
         className="peer w-full rounded-card bg-card py-4 pl-18 text-xs/[1.35] shadow-card transition placeholder:text-ink-muted md:py-4.5 md:text-sm/[1.45]"
       />
