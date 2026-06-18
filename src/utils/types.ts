@@ -1,4 +1,4 @@
-export type ThemeProp = { theme: "dark" | "light" };
+export type ThemeProp = { theme: "dark" | "light" | undefined };
 
 export type CountriesApiResponse = { countries: Countries; hasMore: boolean };
 

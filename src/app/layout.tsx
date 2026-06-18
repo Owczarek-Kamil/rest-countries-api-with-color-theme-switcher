@@ -23,13 +23,28 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const cookieValue = cookieStore.get("theme")?.value;
 
-  const theme: "dark" | "light" =
-    cookieValue === "dark" || cookieValue === "light" ? cookieValue : "light";
+  const theme = cookieValue === "dark" || cookieValue === "light" ? cookieValue : undefined;
 
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${nunitoSans.variable} h-full antialiased ${theme === "dark" ? "dark" : ""}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (!document.cookie.includes('theme=')) {
+                  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                  }
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="flex min-h-full min-w-xs flex-col bg-background text-ink-primary transition">
         <Header theme={theme} />
         {children}
