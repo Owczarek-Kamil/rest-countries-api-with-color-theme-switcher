@@ -2,7 +2,7 @@ export const SEARCH_PARAM_NAME = "search";
 export const REGION_PARAM_NAME = "region";
 export const OFFSET_PARAM_NAME = "offset";
 
-export const LIMIT = 5;
+export const LIMIT = 12;
 
 export const getValidatedParams = (filters: Record<string, string | string[] | undefined>) => {
   const params = new URLSearchParams();
