@@ -1,19 +1,18 @@
 "use client";
 
 import { IoArrowBackOutline } from "react-icons/io5";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
-export default function GoBackButton() {
-  const router = useRouter();
-
-  const handleBack = () => router.back();
+export default function GoBackLink() {
+  const searchParams = useSearchParams();
 
   return (
-    <button
-      onClick={handleBack}
+    <Link
+      href={`/?${searchParams.toString()}`}
       className="flex min-h-8 w-fit cursor-pointer items-center gap-2 rounded-xs bg-card px-6 text-sm/[2.25] font-semibold text-ink-primary shadow-card transition-colors hover:bg-ink-primary/5 focus-visible:outline-offset-4 md:min-h-10 md:px-8 md:text-base/loose">
       <IoArrowBackOutline className="size-4" />
       <span>Back</span>
-    </button>
+    </Link>
   );
 }

@@ -46,7 +46,7 @@ export default function CountryList({
             key={country.alpha3Code}
             className="block h-full rounded-card transition-all hover:-translate-y-2 hover:shadow-lg focus-visible:outline-offset-4">
             <Link
-              href={`/${country.alpha3Code.toLowerCase()}`}
+              href={`/${country.alpha3Code.toLowerCase()}?${searchParams.toString()}`}
               className="block h-full rounded-card focus-visible:outline-offset-4">
               <CountryCard
                 name={country.name}

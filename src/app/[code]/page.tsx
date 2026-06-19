@@ -1,8 +1,8 @@
+import BorderCountryLink from "@/components/border-country-link";
 import localCountries from "@/data/data.json";
 import formatPopulation from "@/utils/formatter";
 import { Countries } from "@/utils/types";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const localCountriesData: Countries = localCountries;
@@ -91,11 +91,10 @@ export default async function CountryPage({ params }: { params: Promise<{ code: 
             <ul className="flex flex-wrap gap-4">
               {fetchBorders().map((borderCountry) => (
                 <li key={borderCountry.name}>
-                  <Link
-                    href={`/${borderCountry.alpha3Code.toLowerCase()}`}
-                    className="grid min-h-7 min-w-24 place-items-center rounded-md bg-card px-4 text-xs/[1.35] text-ink-primary shadow-card transition-colors hover:bg-ink-primary/5 focus-visible:outline-offset-4 md:text-sm">
-                    {borderCountry.name}
-                  </Link>
+                  <BorderCountryLink
+                    countryName={borderCountry.name}
+                    alpha3Code={borderCountry.alpha3Code}
+                  />
                 </li>
               ))}
             </ul>
